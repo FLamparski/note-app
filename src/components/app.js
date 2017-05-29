@@ -8,11 +8,12 @@ import NoteList from 'components/note-list';
 
 const store = createStore();
 
-export default () => (
-  <Provider store={store}>
+export default function App() {
+	return (<Provider store={store}>
     <div>
       <Header />
       <NoteList />
     </div>
   </Provider>
-);
+	);
+}

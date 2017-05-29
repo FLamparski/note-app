@@ -1,16 +1,16 @@
-import { h, render } from 'preact';
-import 'styles/index.less';
+import {h, render} from 'preact';  // eslint-disable-line no-unused-vars
+import 'styles/index.less'; // eslint-disable-line import/no-unassigned-import
 
 let root;
 function init() {
-  let App = require('components/app.js').default;
-  root = render((<App />), document.body, root);
+	const App = require('components/app.js').default;
+	root = render((<App />), document.body, root);
 }
 
-// in development, set up HMR:
+// In development, set up HMR:
 if (module.hot) {
-	//require('preact/devtools');   // turn this on if you want to enable React DevTools!
-	module.hot.accept('./components/app.js', () => requestAnimationFrame(init) );
+	require('preact/devtools'); // eslint-disable-line import/no-unassigned-import
+	module.hot.accept('./components/app.js', () => requestAnimationFrame(init));
 }
 
 init();

@@ -8,5 +8,12 @@
   "plugins": [
     ["transform-decorators-legacy"],
     ["transform-react-jsx", { "pragma": "h" }]
-  ]
+  ],
+  "env":{
+    "test": {
+      "plugins": [
+        ["babel-plugin-webpack-alias", {"config": "./webpack.config.babel.js"}]
+      ]
+    }
+  }
 }

@@ -1,7 +1,11 @@
 import path from 'path';
 
+import {NamedModulesPlugin} from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+
+const appStyles = new ExtractTextPlugin('style.css');
+const frameworkStyles = new ExtractTextPlugin('framework.css');
 
 export default {
 	context: path.resolve(__dirname, 'src/'),
@@ -12,6 +16,8 @@ export default {
 		publicPath: '/', // Change to relevant path for gh-pages
 		filename: 'main_[hash].js'
 	},
+
+	devtool: process.env.NODE_ENV === 'development' && 'source-map',
 
 	resolve: {
 		extensions: ['.jsx', '.js', '.json', '.less'],
@@ -34,16 +40,22 @@ export default {
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				use: 'babel-loader'
+				use: {
+					loader: 'babel-loader',
+					options: {
+						sourceMap: process.env.NODE_ENV === 'development'
+					}
+				}
 			},
 			{
 				test: /\.less$/,
 				include: path.resolve(__dirname, 'src'),
-				use: ExtractTextPlugin.extract({
+				use: appStyles.extract({
 					fallback: {
 						loader: 'style-loader',
 						options: {
-							singleton: true
+							singleton: true,
+							sourceMap: process.env.NODE_ENV === 'development'
 						}
 					},
 					use: [
@@ -56,24 +68,66 @@ export default {
 								localIdentName: '[local]___[hash:base64:10]'
 							}
 						},
-						'postcss-loader',
+						{
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: process.env.NODE_ENV === 'development'
+							}
+						},
 						{
 							loader: 'less-loader',
 							options: {
-								sourceMap: process.env.NODE_ENV === 'production'
+								sourceMap: process.env.NODE_ENV === 'development'
 							}
 						}
 					]
 				})
+			},
+			{
+				test: /\.css$/,
+				include: /node_modules\/react-toolbox/,
+				use: frameworkStyles.extract({
+					fallback: {
+						loader: 'style-loader',
+						options: {
+							singleton: true,
+							sourceMap: process.env.NODE_ENV === 'development'
+						}
+					},
+					use: [
+						{
+							loader: 'css-loader',
+							options: {
+								sourceMap: process.env.NODE_ENV === 'development',
+								modules: true,
+								importLoaders: 1,
+								localIdentName: 'toolbox--[local]___[hash:base64:10]'
+							}
+						},
+						{
+							loader: 'postcss-loader',
+							options: {
+								sourceMap: process.env.NODE_ENV === 'development'
+							}
+						}
+					]
+				})
+			},
+			{
+				test: /\.svg$/,
+				include: /material-design-icons/,
+				loader: 'svg-sprite-loader'
 			}
 		]
 	},
 
 	plugins: [
-		new ExtractTextPlugin('style.css'),
+		appStyles,
+		frameworkStyles,
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, 'src', './index.ejs'),
 			minify: {collapseWhitespace: true}
-		})
+		}),
+		new NamedModulesPlugin()
 	]
 };

@@ -7,11 +7,19 @@ import Note from 'components/note';
 import {deleteNote} from 'actions/note';
 
 function NoteList({notes, dispatch}) {
-	return (
-	<div class={style.noteGrid}>
-		{(notes || []).map(note => <Note note={note} onDelete={() => dispatch(deleteNote(note))} />)}
-	</div>
-	);
+	if (notes.length) {
+		return (
+			<main class={style.noteGrid}>
+				{notes.map(note => <Note note={note} onDelete={() => dispatch(deleteNote(note))} />)}
+			</main>
+		);
+	} else {
+		return (
+			<main class={style.noteGrid}>
+				<div class={style.noNotes}>No notes</div>
+			</main>
+		);
+	}
 }
 
 export default connect(state => state)(NoteList);

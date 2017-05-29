@@ -1,12 +1,11 @@
 {
   "sourceMaps": true,
   "presets": [
-    "env",
+    ["env", {"targets": {"browsers": ["last 2 versions", "safari >= 8"]}}],
     "stage-0",
     "react"
   ],
   "plugins": [
-    ["transform-decorators-legacy"],
     ["transform-react-jsx", { "pragma": "h" }]
   ],
   "env":{

@@ -2,6 +2,15 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: ~'repeat(auto-fit, fit-content(200px))';
+  grid-gap: 8px;
   margin: 0px auto;
   max-width: 700px;
+}
+
+.noNotes {
+  font-size: 20px;
+  font-weight: bold;
+  color: #9a9a9a;
+  text-align: center;
+  grid-column: ~"1 / span 3";
 }

@@ -1,7 +1,7 @@
 {
   "sourceMaps": true,
   "presets": [
-    ["env", {"targets": {"browsers": ["last 2 versions", "safari >= 8"]}}],
+    ["env", {"targets": {"browsers": ["last 2 versions", "safari >= 9", "ie >= 11"]}}],
     "stage-0",
     "react"
   ],

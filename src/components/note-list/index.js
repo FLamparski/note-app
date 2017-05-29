@@ -7,10 +7,10 @@ import Note from 'components/note';
 import {deleteNote} from 'actions/note';
 
 function NoteList({notes, dispatch}) {
-	if (notes.length > 0) {
+	if (Object.keys(notes).length > 0) {
 		return (
 			<main class={style.noteGrid}>
-				{notes.map(note => <Note note={note} onDelete={() => dispatch(deleteNote(note))} />)}
+				{Object.keys(notes).map(id => <Note note={notes[id]} onDelete={() => dispatch(deleteNote(id))} />)}
 			</main>
 		);
 	}

@@ -1,8 +1,9 @@
-import {h, render} from 'preact';  // eslint-disable-line no-unused-vars
+import {h, render, options as preactOptions} from 'preact';  // eslint-disable-line no-unused-vars
 import 'styles/index.less'; // eslint-disable-line import/no-unassigned-import
 
 let root;
 function init() {
+	preactOptions.debounceRendering = requestAnimationFrame;
 	const App = require('components/app.js').default;
 	root = render((<App />), document.body, root);
 }

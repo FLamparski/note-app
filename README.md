@@ -4,10 +4,11 @@ Notes, but a lot of interesting stuff happens off the UI thread.
 
 ## Iteration 1 - In progress
 
-* [ ] As a user, I want to add and view my notes
+* [x] As a user, I want to add and view my notes
 * [ ] As a user, I want my notes to be really fast
-* [ ] As someone who likes good aesthetics, I want my notes to look presentable,
+* [x] As someone who likes good aesthetics, I want my notes to look presentable,
   but the key priority is still speed
+* [ ] As a real user, I want my notes to be persistent.
 
 # Iteration 2 - Planned
 

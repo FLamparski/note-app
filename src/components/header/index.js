@@ -1,20 +1,13 @@
 import {h} from 'preact'; // eslint-disable-line no-unused-vars
 import {connect} from 'preact-redux';
 
-import {Button} from 'react-toolbox/lib/button';
+import {AppBar} from 'react-toolbox/lib/app_bar';
 
 import style from './style';
 
-import {createNote} from 'actions/note';
-
 function Header({dispatch}) {
 	return (
-    <header class={style.header}>
-      <h1>NoteApp</h1>
-      <nav class={style.toolbar}>
-        <Button primary raised label="Add note" onClick={() => dispatch(createNote())} />
-      </nav>
-    </header>
+    <AppBar title="NoteApp" className={style.header} />
 	);
 }
 

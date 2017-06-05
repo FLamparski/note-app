@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime"; // eslint-disable-line import/no-unassigned-import
 import {h, render, options as preactOptions} from 'preact';  // eslint-disable-line no-unused-vars
 import 'styles/index.less'; // eslint-disable-line import/no-unassigned-import
 

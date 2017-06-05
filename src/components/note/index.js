@@ -15,7 +15,7 @@ export default function Note({note, onDelete, onEdit}) {
 			<CardTitle
 				avatar="https://placehold.it/64x64"
 				title="User"
-				subtitle={note.fromNow} />
+				subtitle={note.fromNow || 'some time ago'} />
 
 			<CardText className={style.noteInner}>{note.text}</CardText>
 

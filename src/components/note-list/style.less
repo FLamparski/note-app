@@ -1,10 +1,32 @@
 .noteGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: ~'repeat(auto-fit, fit-content(200px))';
   grid-gap: 8px;
-  margin: 0px auto;
-  max-width: 700px;
+  margin: 0px auto 8px;
+  max-width: 300px;
+}
+
+@media screen and (min-width: 410px) {
+  .noteGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: ~'repeat(auto-fit, fit-content(200px))';
+    grid-gap: 8px;
+    margin: 0px auto;
+    max-width: 400px;
+  }
+}
+
+@media screen and (min-width: 710px) {
+  .noteGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: ~'repeat(auto-fit, fit-content(200px))';
+    grid-gap: 8px;
+    margin: 0px auto;
+    max-width: 700px;
+  }
 }
 
 .noNotes {

@@ -7,7 +7,7 @@ import style from './style';
 
 export default function Header() {
 	return (
-    <AppBar title="NoteApp" className={style.header} />
+    <AppBar title="NoteApp" />
 	);
 }
 

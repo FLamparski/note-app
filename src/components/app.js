@@ -7,14 +7,18 @@ import Header from 'components/header';
 import NoteList from 'components/note-list';
 import NoteEditor from 'components/note-editor';
 
+import style from './app.less';
+
 const store = createStore();
 
 export default function App() {
 	return (<Provider store={store}>
-    <div>
+    <div class={style.app}>
       <Header />
-			<NoteEditor />
-      <NoteList />
+			<div class={style.content}>
+				<NoteEditor />
+	      <NoteList />
+			</div>
     </div>
   </Provider>
 	);

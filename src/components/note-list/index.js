@@ -7,11 +7,18 @@ import Note from 'components/note';
 import {deleteNote} from 'actions/note';
 import {noteEditorOpen} from 'actions/note-editor';
 
-function NoteList({notes, dispatch}) {
-	if (Object.keys(notes).length > 0) {
+function NoteList({elements, order, isLoading, dispatch}) {
+	if (isLoading) {
+		return (
+				<main class={style.noteGrid}>
+					<div class={style.noNotes}>Loading...</div>
+				</main>
+		);
+	}
+	if (order && order.length > 0) {
 		return (
 			<main class={style.noteGrid}>
-				{Object.keys(notes).map(id => <Note note={notes[id]} onDelete={() => dispatch(deleteNote(id))} onEdit={() => dispatch(noteEditorOpen({noteId: id, text: notes[id].text}))} />)}
+				{order.map(id => <Note note={elements[id]} onDelete={() => dispatch(deleteNote(id))} onEdit={() => dispatch(noteEditorOpen({noteId: id, text: elements[id].text}))} />)}
 			</main>
 		);
 	}
@@ -22,4 +29,4 @@ function NoteList({notes, dispatch}) {
 	);
 }
 
-export default connect(state => state)(NoteList);
+export default connect(state => state.notes)(NoteList);

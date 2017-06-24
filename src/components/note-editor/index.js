@@ -7,7 +7,7 @@ import style from './style';
 import {saveNote} from 'actions/note';
 import {noteEditorTextChanged, noteEditorClose} from 'actions/note-editor';
 
-function NoteEditor({dispatch, noteId, text}) {
+function NoteEditor({dispatch, noteId, text = ''}) {
 	const actionsOff = !noteId && text === '';
 	return (
     <div class={style.container}>

@@ -57,6 +57,7 @@
     "xo": "^0.18.2"
   },
   "dependencies": {
+    "dexie": "^1.5.1",
     "lodash": "^4.17.4",
     "material-design-icons": "^3.0.1",
     "moment": "^2.18.1",
